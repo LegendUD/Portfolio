@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Professional Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            background-color: #f8f8f8;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+        }
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        #hero {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('Assets/Graduation Image.jpeg');
+            background-size: 100% auto;
+            background-position: center center;
+            animation: fadeBackground 10s infinite; /* Animating background change */
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+            animation: fadeInUp 2s ease-in-out; /* Animation to make the content appear smoothly */
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        .hero-content p {
+            font-size: 24px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #d4af37;
+            color: #fff;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 2px solid #d4af37;
+        }
+        .cta-button:hover {
+            background-color: transparent;
+            color: #d4af37;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeBackground {
+            0% {background-image: url('Assets/Graduation Image.jpeg');
+        }
+            50% { background-image: url('Assets/Graduation Image.jpeg'); }
+            100% { background-image: url('Assets/Graduation Image.jpeg'); }
+        }
+
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('Assets/Graduation Image.jpeg');
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+            animation: fadeBackground 10s infinite; /* Change every 10 seconds */
+            position: relative;
+            z-index: 1;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        .hero-content p {
+            font-size: 24px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #d4af37;
+            color: #fff;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 2px solid #d4af37;
+        }
+        .cta-button:hover {
+            background-color: transparent;
+            color: #d4af37;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        .portfolio {
+            padding: 100px 0;
+            background-color: #fff;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .portfolio-item {
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .portfolio-item-content {
+            padding: 20px;
+        }
+        .portfolio-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .portfolio-item p {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        .portfolio-item a {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .portfolio-item a:hover {
+            color: #333;
+        }
+        #videos {
+            padding: 100px 0;
+            background-color: #f8f8f8;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .video-item {
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .video-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .video-thumbnail {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .video-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .video-content {
+            padding: 20px;
+        }
+        .video-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .video-content p {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        .video-content a {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .video-content a:hover {
+            color: #333;
+        }
+        #contact {
+            padding: 100px 0;
+            background-color: #fff;
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f8f8f8;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #333;
+        }
+        .form-group textarea {
+            height: 150px;
+        }
+        .submit-btn {
+            background-color: #d4af37;
+            color: #fff;
+            padding: 15px 40px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 2px solid #d4af37;
+        }
+        .submit-btn:hover {
+            background-color: transparent;
+            color: #d4af37;
+        }
+        youtube-channels {
+        padding: 100px 0;
+        background-color: #f0f0f0;
+    }
+    .channel-grid {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+    .channel-item {
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+    .channel-item:hover {
+        transform: scale(1.05);
+    }
+    .channel-logo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid #d4af37;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .channel-name {
+        margin-top: 15px;
+        font-family: 'Playfair Display', serif;
+        font-size: 18px;
+        color: #333;
+    }  
+    #hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150%;
+            background-image: url('Assets/Graduation Image.jpeg');
+            background-size: cover;
+            background-position: center top;
+            transition: transform 0.5s ease-out;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+            padding-top: 40vh; /* Adjust as needed */
+        }
+        .instagram-section {
+            padding: 100px 0;
+            background-color: #f8f8f8;
+        }
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .instagram-item {
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .instagram-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .instagram-content {
+            padding: 20px;
+        }
+        .instagram-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .instagram-content p {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        .instagram-content a {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .instagram-content a:hover {
+            color: #333;
+        }
+        .instagram-embed {
+            width: 100%;
+            min-height: 450px;
+            border: none;
+            overflow: hidden;
+        }
+        .profile-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.profile-link {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+}
+.profile-link:hover {
+    transform: scale(1.05);
+}
+.instagram-profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #d4af37;
+}
+.instagram-username {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+.instagram-item {
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            height: 100%;
+        }
+        .instagram-content {
+            text-align: center;
+            width: 100%;
+        }
+        .profile-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            width: 100%;
+        }
+        .profile-link {
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .profile-link:hover {
+            transform: scale(1.05);
+        }
+        .instagram-profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #d4af37;
+        }
+        .instagram-username {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+        .instagram-section {
+        padding: 100px 0;
+        background-color: #f8f8f8;
+    }
+    .instagram-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+    .instagram-item {
+        background: #fff;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .instagram-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    .instagram-content {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .instagram-content h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    .instagram-content p {
+        font-size: 14px;
+        margin-bottom: 15px;
+        color: #666;
+    }
+    .instagram-content a {
+        color: #d4af37;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        margin-top: auto;
+    }
+    .instagram-content a:hover {
+        color: #333;
+    }
+    .profile-links {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-grow: 1;
+    }
+    .profile-link {
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.3s ease;
+        text-align: center;
+    }
+    .profile-link:hover {
+        transform: scale(1.05);
+    }
+    .instagram-profile-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #d4af37;
+    }
+    .instagram-username {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #333;
+    }
+    .instagram-embed {
+        width: 100%;
+        min-height: 450px;
+        border: none;
+        overflow: hidden;
+    }
+    .instagram-section {
+            padding: 100px 0;
+            background-color: #f8f8f8;
+        }
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .instagram-item {
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .instagram-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .instagram-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .instagram-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .instagram-content p {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        .instagram-content a {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+        .instagram-content a:hover {
+            color: #333;
+        }
+        .profile-links {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-grow: 1;
+        }
+        .profile-link {
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        .profile-link:hover {
+            transform: scale(1.05);
+        }
+        .instagram-profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #d4af37;
+        }
+        .instagram-username {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+        .instagram-embed {
+            width: 100%;
+            min-height: 450px;
+            border: none;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Portfolio</div>
+            <div class="nav-links">
+                <a href="#hero">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="ads.html">Ads</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-image"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Mohd Umar Dar</h1>
+            <p>Personal Marketing Stuff That I Did</p>
+        </div>
+    </section>
+
+
+    <section id="Youtube videos" class="Youtube videos">
+        <div class="container">
+            <h2 class="section-title">My Lo-FI Youtube videos</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="Assets/Sleepy.png" alt="YouTube Video 1">
+                    <div class="portfolio-item-content">
+                        <h3>Sleepy</h3>
+                        <p>3 A.M Sleep ~ Late night thinking - Lo-Fi/Rain</p>
+                        <a href=https://youtu.be/j6YnpTJtKgg target="_blank">Watch on Youtube</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="Assets/Cloudy.png" alt="Youtube video 2">
+                    <div class="portfolio-item-content">
+                        <h3>Cloudy</h3>
+                        <p>Away from everyone: Lo-Fi on the clouds ~ Relaxing/Calming</p>
+                        <a href=https://youtu.be/-2qH8e8ECac target="_blank">Watch on Youtube</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="assets/Grassy.png" alt="Youtube video 3">
+                    <div class="portfolio-item-content">
+                        <h3>Grassy</h3>
+                        <p>Windy Fields - Lo-fi tunes to Sleep 😴Zzzzzzz...</p>
+                        <a href=https://youtu.be/XCa2NvYKRNI target="_blank">Watch on Youtube</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="videos">
+        <div class="container">
+            <h2 class="section-title">My Other Videos</h2>
+            <div class="video-grid">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="/assets/True Lovers.jpg" alt="Video 1 Thumbnail">
+                    </div>
+                    <div class="video-content">
+                        <h3>Story of THE LOVERS </h3>
+                        <p>Educational Video</p>
+                        <a href=https://youtu.be/PCZIxCxJ2fU target="_blank">Watch on YouTube</a>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="assets/Black Hole.jpg" alt="Video 2 Thumbnail">
+                    </div>
+                    <div class="video-content">
+                        <h3>Black Hole</h3>
+                        <p>Video for Junior Breakthrough Challenge </p>
+                        <a href=https://youtu.be/Ql2bpFCosQM target="_blank">Watch on YouTube</a>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="/assets/Social.png" alt="Video 3 Thumbnail">
+                    </div>
+                    <div class="video-content">
+                        <h3>Is Social Media Boon or Bane</h3>
+                        <p>Made only for University project </p>
+                        <a href=https://youtu.be/uwDtvUIT-YE target="_blank">Watch on YouTube</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="youtube-channels">
+        <div class="container">
+            <h2 class="section-title">Channels</h2>
+            <div class="channel-grid">
+                <a href="https://www.youtube.com/@Uuphoric" class="channel-item" target="_blank" rel="noopener noreferrer">
+                    <img src="/assets/uphoric.jpg" alt="Uphoric Logo" class="channel-logo">
+                    <p class="channel-name">Uphoric</p>
+                </a>
+                <a href="https://www.youtube.com/@factzer3187" class="channel-item" target="_blank" rel="noopener noreferrer">
+                    <img src="/assets/Factzer.jpg" alt="Factzer Logo" class="channel-logo">
+                    <p class="channel-name">Factzer</p>
+                </a>
+                <div class="channel-grid">
+                    <a href="https://www.youtube.com/@legendsud1751" class="channel-item" target="_blank" rel="noopener noreferrer">
+                        <img src="/assets/LegendUD.jpg" alt="Legends UD Logo" class="channel-logo">
+                        <p class="channel-name">Legends UD</p>
+                    </a>
+            </div>
+        </div>
+        
+
+        <script>
+            window.addEventListener('scroll', function() {
+                let scrollPosition = window.pageYOffset;
+                let heroImage = document.querySelector('.hero-image');
+                let heroHeight = document.getElementById('hero').offsetHeight;
+                
+                if (scrollPosition <= heroHeight) {
+                    heroImage.style.transform = `translateY(-${scrollPosition * 0.5}px)`;
+                }
+            });
+        </script>
+        <section id="instagram" class="instagram-section">
+            <div class="container">
+                <h2 class="section-title">My Instagram</h2>
+                <div class="instagram-grid">
+                    <div class="instagram-item">
+                        <div class="instagram-content">
+                            <h3>Instagram Post</h3>
+                            <p>Check out my Stoic post!</p>
+                            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C-By8BoqM5W/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"></blockquote>
+                            <a href="https://www.instagram.com/p/C-By8BoqM5W/" target="_blank">View on Instagram</a>
+                        </div>
+                    </div>
+                    <div class="instagram-item">
+                        <div class="instagram-content">
+                            <h3>My Instagram Profiles</h3>
+                            <p>Check out my accounts!</p>
+                            <div class="profile-links">
+                                <a href="https://www.instagram.com/0uphoric0/" target="_blank" rel="noopener noreferrer" class="profile-link">
+                                    <img src="/assets/instagram.jpg" alt="Uphoric Instagram Profile" class="instagram-profile-img">
+                                    <p class="instagram-username">@0uphoric0</p>
+                                </a>
+                                <a href="https://www.instagram.com/umardar00/" target="_blank" rel="noopener noreferrer" class="profile-link">
+                                    <img src="/assets/instagram 2.jpg" alt="Second Instagram Profile" class="instagram-profile-img">
+                                    <p class="instagram-username">@umardar00</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="instagram-item">
+                        <div class="instagram-content">
+                            <h3>Instagram Reel</h3>
+                            <p>Check out my quotation reel!</p>
+                            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C1mOnnMBxkZ/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"></blockquote>
+                            <a href="https://www.instagram.com/reel/C1mOnnMBxkZ/" target="_blank">View on Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    
+        </section>
+            <script src="https://www.instagram.com/embed.js"></script>
+            <script>
+                // Function to load Instagram content
+                {
+                    fetch(`https://api.instagram.com/oembed/?url=${encodeURIComponent(url)}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById(elementId).innerHTML = data.html;
+                            // Trigger Instagram's embed.js to style the embed
+                            if (window.instgrm) {
+                                window.instgrm.Embeds.process();
+                            }
+                        })
+                        .catch(error => console.error('Error loading Instagram content:', error));
+                }
+        
+                // Load Instagram content when the page is ready
+                {
+                    loadInstagramContent('instagram-post', 'https://www.instagram.com/p/C-By8BoqM5W/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==');
+                    loadInstagramContent('instagram-profile', 'https://www.instagram.com/0uphoric0/');
+                    loadInstagramContent('instagram-reel', 'https://www.instagram.com/reel/C1mOnnMBxkZ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==');
+                };
+            </script>
+    
+</body>
+</html>
