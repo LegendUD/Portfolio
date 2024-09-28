@@ -150,7 +150,7 @@
                 <p><i class="fas fa-envelope"></i> umardarsm@gmail.com</p>
             </div>
             
-            <!-- Contact Form -->
+            <!-- Single Contact Form -->
             <form id="contact-form" class="contact-form">
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -166,27 +166,6 @@
                 </div>
                 <button type="submit" class="submit-btn">Send Message</button>
             </form>
-
-            <!-- EmailJS Script -->
-            <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-            <script type="text/javascript">
-                (function(){
-                    emailjs.init("YOUR_USER_ID");  // Replace YOUR_USER_ID with your actual EmailJS user ID
-                })();
-
-                const form = document.getElementById('contact-form');
-                form.addEventListener('submit', function(event) {
-                    event.preventDefault();  // Prevent the default form submission
-
-                    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-                        .then(function() {
-                            alert('Your message has been sent!');  // Show success message
-                            form.reset();  // Reset the form after submission
-                        }, function(error) {
-                            alert('Oops! There was a problem sending your message.');
-                        });
-                });
-            </script>
         </div>
     </section>
 </body>
