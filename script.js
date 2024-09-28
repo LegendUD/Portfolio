@@ -1,3 +1,20 @@
+// JavaScript for hiding and showing the navigation bar on swipe
+let lastScrollTop = 0;
+const navbar = document.querySelector('header'); // Adjusted selector if 'header' is the correct element
+
+window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop) {
+        // User is scrolling down, hide the navbar
+        navbar.style.top = '-100px';
+    } else {
+        // User is scrolling up, show the navbar
+        navbar.style.top = '0';
+    }
+    lastScrollTop = scrollTop;
+});
+
+// Express.js server setup for handling contact form submission with SendGrid
 const express = require('express');
 const bodyParser = require('body-parser');
 const sgMail = require('@sendgrid/mail');

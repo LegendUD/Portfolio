@@ -165,7 +165,51 @@
                 transform: translateY(0);
             }
         }
-    </style>
+    
+@media screen and (max-width: 768px) {
+    /* Adjusting container width */
+    .container {
+        max-width: 100%; /* Make container full width */
+        padding: 0 20px;
+    }
+
+    /* Stacking nav-links vertically for mobile */
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nav-links a {
+        margin: 10px 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Hero section background image scaling */
+    #hero {
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* Adjust grid layouts for portfolio, video, and instagram sections */
+    .portfolio-grid, .video-grid, .instagram-grid {
+        grid-template-columns: 1fr;  /* Stack items */
+        gap: 20px;
+    }
+
+    /* Section padding reduction for mobile */
+    section {
+        padding: 40px 20px; /* Reduce padding for smaller screens */
+    }
+}
+</style>
 </head>
 <body>
     <header>
